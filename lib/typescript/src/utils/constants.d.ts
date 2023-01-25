@@ -1,0 +1,13 @@
+export declare const DIGIT = "0";
+export declare const DIGIT_SPACE = "9";
+export declare const DIGIT_SPACE_PLUS_MINUS = "#";
+export declare const ALPHA = "L";
+export declare const ALPHA_SPACE = "?";
+export declare const ALPHANUM = "A";
+export declare const ALPHANUM_SPACE = "a";
+export declare const CHAR = "&";
+export declare const CHAR_SPACE = "C";
+export declare const ESCAPE = "\\";
+export declare const HOURS = "H";
+export declare const MINUTES = "m";
+export declare const SECONDS = "s";
