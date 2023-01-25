@@ -1,22 +1,22 @@
 import { mask, unMask } from './mask'
 
 test('should mask with number digit pattern', () => {
-  const expected = '342.934.480-80'
-  const received = mask('34293448080', '999.999.999-99')
+  const expected = '342.934.480-80x+ 3'
+  const received = mask('34293448080x+ 3', '000.000.000-00x#99')
 
   expect(received).toBe(expected)
 })
 
 test('should mask with alpha pattern', () => {
-  const expected = 'react-native'
-  const received = mask('react native', 'AAAAA-AAAAAA')
+  const expected = 'react-xnative test'
+  const received = mask('react     native test', 'LLLLL-xLLLLLL?LLLL')
 
   expect(received).toBe(expected)
 })
 
 test('should mask with alphanumeric pattern', () => {
-  const expected = 'rct-777'
-  const received = mask('rct 777', 'AAA-999')
+  const expected = 'r4t-777- -345'
+  const received = mask('r4t 777 345', 'AAA-000-a-aaa')
 
   expect(received).toBe(expected)
 })
