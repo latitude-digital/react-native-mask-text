@@ -29,18 +29,18 @@ function toPattern(
 
   const outputLength = output.length
   for (index = 0; index < outputLength; index++) {
-    console.log('checking',output[index],'against',values[charCounter]);
+    // console.log('checking',output[index],'against',values[charCounter]);
     // Reached the end of input
     if (charCounter >= values.length) {
       if (patternChars.length === charsValues.length) {
-        console.log('###1', output);
+        // console.log('###1', output);
         return output.join('')
       }
       if (
         placeholder !== undefined &&
         patternChars.length > charsValues.length
       ) {
-        console.log('###2', 'addPlaceholder', {output, index, placeholder});
+        // console.log('###2', 'addPlaceholder', {output, index, placeholder});
         return addPlaceholder(output, index, placeholder).join('')
       }
       break
@@ -61,11 +61,11 @@ function toPattern(
       (output[index] === SECONDS && values[charCounter].match(/[0-59]/)) ||
       (output[index] === SECONDS && values[charCounter].match(/[0-59]/))
     ) {
-      console.log('###3', 'match expression', {
-        index,
-        'output[index]': output[index],
-        'values[charCounter++]': values[charCounter+1],
-      });
+      // console.log('###3', 'match expression', {
+      //   index,
+      //   'output[index]': output[index],
+      //   'values[charCounter++]': values[charCounter+1],
+      // });
       output[index] = values[charCounter++]
     } else if (
       (output[index] === DIGIT && !values[charCounter].match(/\d/)) ||
@@ -85,10 +85,10 @@ function toPattern(
       (output[index] === SECONDS && !values[charCounter].match(/[0-59]/))
     ) {
       if (placeholder !== undefined) {
-          console.log('###4', 'placeholder', {output, index, placeholder});
+          // console.log('###4', 'placeholder', {output, index, placeholder});
           return addPlaceholder(output, index, placeholder).join('')
       }
-      console.log('###5', 'invalid character retry with next character', {output, index, placeholder, thisSlice:output.slice(0, index).join('')});
+      // console.log('###5', 'invalid character retry with next character', {output, index, placeholder, thisSlice:output.slice(0, index).join('')});
       // return output.slice(0, index).join('')
       index--
       charCounter++
@@ -97,18 +97,18 @@ function toPattern(
       // escape character so move index up and have a literal character
     } else if (output[index] === ESCAPE)
     {
-      console.log('###6', 'escape', {index: index+1,charCounter: charCounter+2});
+      // console.log('###6', 'escape', {index: index+1,charCounter: charCounter+2});
       index++
       charCounter++
       charCounter++
       // exact match for a non-magic character
     } else if (output[index] === values[charCounter]) {
-      console.log('###7', 'non-magic', {charCounter: charCounter+1});
+      // console.log('###7', 'non-magic', {charCounter: charCounter+1});
       charCounter++
     }
-  console.log('output so far', output);
+  // console.log('output so far', output);
   }
-  console.log('###8', output.join('').substr(0, index), {output, index});
+  // console.log('###8', output.join('').substr(0, index), {output, index});
   return output.join('').substr(0, index)
 }
 
